@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  oidc-regular-web-app:
+    build: 
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    extra_hosts:
+      - "kubernetes.docker.internal:host-gateway"
+    volumes:
+      - ~/.ssh/id_rsa:/opt/baiyuan/.ssh/id_rsa
+      - ~/.kube:/opt/baiyuan/.kube
+      - ..:/opt/baiyuan/code
+      - ~/etc/localtime:/opt/baiyuan/etc/localtime
+      - ~/etc/timezone:/opt/baiyuan/etc/timezone
+    command: ["sleep infinity"]
